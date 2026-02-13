@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yamin Mir | Mechanical Engineering Student</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">&#9881;</span>
+        <span class="logo-text">YAMIN</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#resume" class="nav-link">Resume</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HOME / HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <p class="hero-greeting animate-in">Hello, I'm</p>
+      <h1 class="hero-name animate-in delay-1">Yamin Mir</h1>
+      <h2 class="hero-title animate-in delay-2">Mechanical Engineering Student</h2>
+      <p class="hero-description animate-in delay-3">
+        Mechanical Engineering student at UIC with a focus on CAD-based design, robotics, and simulation.
+        Experienced in SolidWorks, ANSYS, 3D printing, and building autonomous systems with ROS 2.
+      </p>
+      <div class="hero-cta animate-in delay-4">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-stats animate-in delay-4">
+        <div class="stat">
+          <span class="stat-number" data-target="5">0</span>+
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number-static">3.5</span>
+          <span class="stat-label">GPA</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="2">0</span>+
+          <span class="stat-label">Research Roles</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="gear-assembly">
+        <div class="gear gear-lg">&#9881;</div>
+        <div class="gear gear-md">&#9881;</div>
+        <div class="gear gear-sm">&#9881;</div>
+      </div>
+    </div>
+    <a href="#projects" class="scroll-indicator" aria-label="Scroll down">
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Portfolio</p>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">A selection of mechanical engineering projects showcasing design, analysis, and innovation.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="robotics">Robotics</button>
+        <button class="filter-btn" data-filter="cfd">CFD / FEA</button>
+        <button class="filter-btn" data-filter="design">Mech. Design</button>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="project-grid">
+        <!-- Project 1: Pentagon Robot -->
+        <div class="project-card" data-category="design">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <span class="project-icon">&#128279;</span>
+            </div>
+            <div class="project-overlay">
+              <a href="project-pentagon.html" class="project-link">View Project &#8594;</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Senior Design (ME-396)</span>
+            <h3 class="project-name">Pentagon Robot &ndash; Five-Bar Parallel Planar Manipulator</h3>
+            <p class="project-desc">Leading design of an automated pick-and-place system using a five-bar linkage mechanism. Performing inverse kinematics for &plusmn;0.5mm accuracy and &le;5s cycle time with vacuum end-effector and pressure sensor feedback.</p>
+            <div class="project-tools">
+              <span>SolidWorks</span>
+              <span>Arduino</span>
+              <span>Raspberry Pi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Autonomous Ackermann Car (ME392) -->
+        <div class="project-card" data-category="robotics">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <span class="project-icon">&#128663;</span>
+            </div>
+            <div class="project-overlay">
+              <a href="project-ackermann.html" class="project-link">View Project &#8594;</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Undergraduate Research (ME 392)</span>
+            <h3 class="project-name">Autonomous Ackermann Car with Nav2 Stack</h3>
+            <p class="project-desc">Built a fully autonomous Ackermann-steered RC car from scratch. Designed chassis in SolidWorks, 3D-printed with PETG-CF, integrated LiDAR, Intel RealSense D435i, and NVIDIA Jetson Orin Nano. Implemented Nav2 stack with ROS 2 Humble for indoor autonomous navigation.</p>
+            <div class="project-tools">
+              <span>ROS 2</span>
+              <span>SolidWorks</span>
+              <span>NVIDIA Jetson</span>
+              <span>Nav2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: CNN Lane Detection (Ongoing) -->
+        <div class="project-card" data-category="robotics">
+          <div class="project-image">
+            <div class="project-placeholder project-ongoing">
+              <span class="project-icon">&#129504;</span>
+              <span class="project-badge">ONGOING</span>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="project-link">In Progress</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Ongoing Research &ndash; Spring 2026</span>
+            <h3 class="project-name">Self-Driving Car with CNN Lane Detection</h3>
+            <p class="project-desc">Upgrading the autonomous RC car into a CNN-based lane-following platform. Collecting and labeling driving data, training a deep learning model for real-time lane detection, and deploying on Jetson for steering control under varying lighting and track conditions.</p>
+            <div class="project-tools">
+              <span>CNN / Deep Learning</span>
+              <span>ROS 2</span>
+              <span>Jetson Orin Nano</span>
+              <span>Python</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Internal Flow CFD (ME211) -->
+        <div class="project-card" data-category="cfd">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <span class="project-icon">&#127754;</span>
+            </div>
+            <div class="project-overlay">
+              <a href="project-cfd.html" class="project-link">View Project &#8594;</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">CFD Analysis (ME 211)</span>
+            <h3 class="project-name">CFD Analysis of Internal Water Flow &ndash; W-Shaped Channel</h3>
+            <p class="project-desc">Performed CFD analysis of incompressible internal flow through a 1m non-uniform W-shaped channel using ANSYS Fluent. Generated high-resolution mesh (~900k elements) with laminar and turbulent (k&ndash;&omega; SST) models. Analyzed velocity profiles, pressure drop, and wall shear stress.</p>
+            <div class="project-tools">
+              <span>ANSYS Fluent</span>
+              <span>SolidWorks</span>
+              <span>MATLAB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: Autonomous Pinball Machine -->
+        <div class="project-card" data-category="design">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <span class="project-icon">&#127919;</span>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="project-link">View Details &#8594;</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Design Project (ME 250)</span>
+            <h3 class="project-name">Autonomous Pinball Machine</h3>
+            <p class="project-desc">Designed and manufactured a pinball machine maintaining a 1/2" ball in perpetual motion. Created detailed CAD models, performed mechanism simulations, and fabricated custom gears using 3D printing with Arduino-based sensors.</p>
+            <div class="project-tools">
+              <span>SolidWorks</span>
+              <span>3D Printing</span>
+              <span>Arduino</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESUME ========== -->
+  <section class="section resume" id="resume">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Background</p>
+        <h2 class="section-title">Resume</h2>
+        <p class="section-subtitle">My professional journey in mechanical engineering.</p>
+      </div>
+
+      <div class="resume-grid">
+        <!-- Experience Column -->
+        <div class="resume-column">
+          <h3 class="resume-heading"><span class="resume-icon">&#128188;</span> Experience</h3>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Aug 2024 &ndash; Present</span>
+                <h4 class="timeline-title">Research Assistant 2 &ndash; Robotics and Motion Lab</h4>
+                <p class="timeline-company">University of Illinois at Chicago</p>
+                <p class="timeline-desc">Designed and simulated robots using SolidWorks for academic and lab-based projects. Utilized 3D printing and laser cutting to fabricate functional robot components. Presented research findings at weekly lab meetings and contributed to outreach events.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Jun 2024 &ndash; Aug 2024</span>
+                <h4 class="timeline-title">Mechanical Design Intern</h4>
+                <p class="timeline-company">University of Illinois at Chicago &ndash; GPIP Program</p>
+                <p class="timeline-desc">Modeled robotic car for laser cutting and optimized components for efficient assembly. Programmed Raspberry Pi and Arduino to control motors and servo-based robotic arm. Developed real-time object detection system using Python, OpenCV, and ArUco markers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Column -->
+        <div class="resume-column">
+          <h3 class="resume-heading"><span class="resume-icon">&#127891;</span> Education</h3>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Expected Dec 2026</span>
+                <h4 class="timeline-title">B.S. Mechanical Engineering; Minor: Computer Science</h4>
+                <p class="timeline-company">University of Illinois at Chicago</p>
+                <p class="timeline-desc">GPA: 3.5/4.0. Key Courses: Finite Element Analysis, Fluid Mechanics, Thermodynamics, Statics, Strength of Materials, Circuit Analysis, Engineering Design, Python, C, MATLAB.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="resume-heading" style="margin-top: 2.5rem;"><span class="resume-icon">&#128295;</span> Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <span class="skill-name">SolidWorks</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">ANSYS Fluent (CFD/FEA)</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Autodesk Inventor</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Python / OpenCV</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">ROS 2 / Gazebo</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">3D Printing / Laser Cutting</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">MATLAB / Simulink</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Arduino / Raspberry Pi</span>
+              <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-download">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Get in Touch</p>
+        <h2 class="section-title">Contact Me</h2>
+        <p class="section-subtitle">Have a project in mind or want to collaborate? Let's connect.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-card-icon">&#128231;</div>
+            <h4>Email</h4>
+            <p>ymir2@uic.edu</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">&#128205;</div>
+            <h4>Location</h4>
+            <p>Chicago, IL</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">&#128188;</div>
+            <h4>LinkedIn</h4>
+            <p>linkedin.com/in/yamin</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">&#128241;</div>
+            <h4>Phone</h4>
+            <p>(917) 728-8910</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            Send Message <span class="btn-arrow">&#8594;</span>
+          </button>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">&#9881;</span>
+          <span class="logo-text">YAMIN MIR</span>
+          <p>Mechanical Engineering Student @ UIC</p>
+        </div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Yamin Mir. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/scripts.js"></script>
+</body>
+</html>

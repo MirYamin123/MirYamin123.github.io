@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CFD Analysis &ndash; W-Shaped Channel | Yamin Mir</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#9881;</span>
+        <span class="logo-text">YAMIN</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#projects" class="nav-link active">Projects</a></li>
+        <li><a href="index.html#resume" class="nav-link">Resume</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PROJECT HERO -->
+  <section class="project-hero">
+    <div class="container">
+      <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+      <div class="project-hero-header">
+        <span class="project-tag">CFD Analysis (ME 211)</span>
+        <h1 class="project-hero-title">CFD Analysis of Internal Water Flow Through a W-Shaped Channel</h1>
+        <p class="project-hero-subtitle">Computational fluid dynamics study of incompressible internal flow using ANSYS Fluent with laminar and turbulent models.</p>
+        <div class="project-meta">
+          <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value">December 2025</span></div>
+          <div class="meta-item"><span class="meta-label">Course</span><span class="meta-value">ME 211 &ndash; Fluid Mechanics</span></div>
+          <div class="meta-item"><span class="meta-label">Team</span><span class="meta-value">Mir Yamin</span></div>
+          <div class="meta-item"><span class="meta-label">Institution</span><span class="meta-value">University of Illinois at Chicago</span></div>
+        </div>
+        <div class="project-tools">
+          <span>ANSYS Fluent</span>
+          <span>SolidWorks</span>
+          <span>SpaceClaim</span>
+          <span>MATLAB</span>
+          <span>CFD Meshing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT CONTENT -->
+  <section class="project-detail">
+    <div class="container">
+      <div class="detail-content">
+
+        <!-- Introduction -->
+        <div class="detail-section">
+          <h2>Introduction</h2>
+          <p>This project investigates internal fluid flow through a 1-meter rectangular channel featuring a <strong>753 mm W-shaped bottom geometry</strong>. A CAD model was created in SolidWorks, exported, and imported into ANSYS Workbench for meshing and CFD simulation. Three distinct analyses were performed under different inlet conditions and turbulence models to study how flow behavior, pressure distribution, and velocity profiles are affected by the channel geometry.</p>
+        </div>
+
+        <!-- Channel Design -->
+        <div class="detail-section">
+          <h2>Channel Design &amp; Geometry</h2>
+          <p>The channel has a rectangular cross-section with the following dimensions:</p>
+          <div class="spec-table">
+            <table>
+              <tr><td>Channel Height</td><td>7 mm</td></tr>
+              <tr><td>Channel Width</td><td>50 mm</td></tr>
+              <tr><td>Total Length</td><td>1013 mm</td></tr>
+              <tr><td>W-Section Start</td><td>120 mm from inlet</td></tr>
+              <tr><td>W-Section Length</td><td>753 mm</td></tr>
+            </table>
+          </div>
+          <p>The SolidWorks assembly was exported and imported into ANSYS SpaceClaim, where tolerances were resolved, parts were combined, and the internal fluid volume was extracted for physics simulation.</p>
+        </div>
+
+        <!-- Mesh -->
+        <div class="detail-section">
+          <h2>Mesh Generation</h2>
+          <p>A structured mesh was generated with an <strong>inflation layer</strong> applied to all wall faces (excluding inlet and outlet) to resolve boundary layer effects:</p>
+          <ul>
+            <li><strong>Inflation Layers:</strong> 5 layers, smooth transition, ratio 0.272, growth rate 1.2</li>
+            <li><strong>Element Size:</strong> 153 mm (optimized for ANSYS Student limit of ~1M elements)</li>
+            <li><strong>Total Nodes:</strong> 396,728</li>
+            <li><strong>Total Faces:</strong> 2,214,817</li>
+            <li><strong>Total Elements:</strong> ~919,590</li>
+          </ul>
+          <p>Named selections were created for inlet (<code>inlet-x</code>) and outlet (<code>outlet-x</code>) boundaries.</p>
+        </div>
+
+        <!-- Three Analyses -->
+        <div class="detail-section">
+          <h2>Simulation Cases</h2>
+          <div class="detail-grid three-col">
+
+            <div class="detail-card">
+              <h4>Case 1: Mass Flow &ndash; Laminar</h4>
+              <p class="meta-label">By: Mir Yamin</p>
+              <ul>
+                <li>Inlet: Mass flow rate = 0.0178 kg/s</li>
+                <li>Model: Laminar</li>
+                <li>Solver: 3D, double-precision, pressure-based, steady</li>
+                <li>Fluid: Water (998.2 kg/m&sup3;)</li>
+                <li>Wall: Aluminum, no-slip, 0 W/m&sup2; heat flux</li>
+                <li>Scheme: Coupled, 2nd-order upwind</li>
+              </ul>
+            </div>
+
+            <div class="detail-card">
+              <h4>Case 2: Mass Flow &ndash; Turbulent SST</h4>
+              <p class="meta-label">By: Mir Yamin</p>
+              <ul>
+                <li>Inlet: Mass flow rate = 0.0178 kg/s</li>
+                <li>Model: k&ndash;&omega; SST</li>
+                <li>Viscous heating enabled</li>
+                <li>Converged in ~88 iterations</li>
+                <li>Outlet velocity: 0.0509 m/s (matches theory)</li>
+                <li>Re &asymp; 625 (laminar regime)</li>
+              </ul>
+            </div>
+
+            <div class="detail-card">
+              <h4>Case 3: Velocity Inlet 2 m/s</h4>
+              <p class="meta-label">By: Mir Yamin</p>
+              <ul>
+                <li>Inlet: Velocity = 2 m/s</li>
+                <li>Model: Laminar</li>
+                <li>Inlet temperature: 26.85&deg;C</li>
+                <li>Converged in ~133 iterations</li>
+                <li>Outlet pressure: ~2431 Pa</li>
+                <li>Re &raquo; 625 (transitional regime)</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="detail-section">
+          <h2>Results &amp; Discussion</h2>
+
+          <h3>Velocity Distribution</h3>
+          <p>Cases 1 and 2 produced stable, fully developed <strong>parabolic velocity profiles</strong> with outlet velocity of 0.0509 m/s &mdash; exactly matching the theoretical prediction from V = &#7745;/(&rho;A). No recirculation zones formed in the W-section at these low Reynolds numbers. Case 3 showed much steeper velocity gradients with acceleration bands along the W-profile&rsquo;s sloped surfaces.</p>
+
+          <h3>Pressure Distribution</h3>
+          <p>Pressure decreased monotonically from inlet to outlet across all cases. Low-flow cases showed minimal pressure drops (1&ndash;2 Pa), while the 2 m/s case produced a <strong>pressure drop of ~2431 Pa</strong> &mdash; over two orders of magnitude greater, demonstrating the nonlinear dependence of frictional losses on inlet velocity.</p>
+
+          <h3>Effect of W-Shaped Geometry</h3>
+          <p>At low velocities, the W-section had minimal influence on flow behavior. At higher velocities (Case 3), the geometry produced <strong>zones of accelerated flow, increased shear stress, and sharper pressure gradients</strong>. This demonstrates that geometric surface features become significant as flow velocity increases.</p>
+
+          <div class="spec-table wide-table">
+            <h3>Comparison Table</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Case 1 (Laminar)</th>
+                  <th>Case 2 (SST)</th>
+                  <th>Case 3 (2 m/s)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Inlet Type</td><td>Mass Flow (0.0178 kg/s)</td><td>Mass Flow (0.0178 kg/s)</td><td>Velocity (2 m/s)</td></tr>
+                <tr><td>Model</td><td>Laminar</td><td>k&ndash;&omega; SST</td><td>Laminar</td></tr>
+                <tr><td>Reynolds Number</td><td>~625</td><td>~625</td><td>Transitional</td></tr>
+                <tr><td>Outlet Velocity</td><td>~0.0509 m/s</td><td>~0.0509 m/s</td><td>Higher (consistent w/ inlet)</td></tr>
+                <tr><td>Pressure Drop</td><td>~1&ndash;2 Pa</td><td>~1&ndash;2 Pa</td><td>~2431 Pa</td></tr>
+                <tr><td>Convergence</td><td>Smooth</td><td>~88 iterations</td><td>~133 iterations</td></tr>
+                <tr><td>W-Section Effect</td><td>Minimal</td><td>Minimal</td><td>Significant</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Conclusions -->
+        <div class="detail-section">
+          <h2>Conclusions</h2>
+          <ol>
+            <li>Low-velocity cases (laminar and turbulent models) produced <strong>nearly identical results</strong>, confirming the flow is physically laminar at Re &asymp; 625.</li>
+            <li>Theoretical velocity matched Fluent results exactly in both mass-flow cases, <strong>validating boundary conditions</strong> and solver accuracy.</li>
+            <li>The 2 m/s velocity-inlet case revealed <strong>strong pressure losses</strong>, demonstrating expected frictional scaling with velocity.</li>
+            <li>The W-shaped geometry influences flow <strong>only at higher speeds</strong>, where sharper gradients and increased wall shear become significant.</li>
+            <li>All simulations <strong>converged successfully</strong> within the ANSYS Student mesh limits (~920k elements), confirming appropriate mesh quality and solver settings.</li>
+          </ol>
+        </div>
+
+        <!-- Download -->
+        <div class="detail-section detail-cta">
+          <a href="index.html#projects" class="btn btn-outline">&larr; Back to Projects</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Yamin Mir. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/scripts.js"></script>
+</body>
+</html>

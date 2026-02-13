@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous Ackermann Car | Yamin Mir</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#9881;</span>
+        <span class="logo-text">YAMIN</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#projects" class="nav-link active">Projects</a></li>
+        <li><a href="index.html#resume" class="nav-link">Resume</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PROJECT HERO -->
+  <section class="project-hero">
+    <div class="container">
+      <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+      <div class="project-hero-header">
+        <span class="project-tag">Undergraduate Research (ME 392)</span>
+        <h1 class="project-hero-title">Autonomous Ackermann Car with Nav2 Stack</h1>
+        <p class="project-hero-subtitle">A fully autonomous indoor navigation vehicle built from scratch using ROS 2, NVIDIA Jetson, and the Nav2 framework.</p>
+        <div class="project-meta">
+          <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value">December 2025</span></div>
+          <div class="meta-item"><span class="meta-label">Course</span><span class="meta-value">ME 392 &ndash; Undergraduate Research</span></div>
+          <div class="meta-item"><span class="meta-label">Advisor</span><span class="meta-value">Prof. Pranav Bhounsule</span></div>
+          <div class="meta-item"><span class="meta-label">Institution</span><span class="meta-value">University of Illinois at Chicago</span></div>
+        </div>
+        <div class="project-tools">
+          <span>ROS 2 Humble</span>
+          <span>SolidWorks</span>
+          <span>NVIDIA Jetson Orin Nano</span>
+          <span>Nav2</span>
+          <span>SLAM Toolbox</span>
+          <span>Python</span>
+          <span>3D Printing (PETG-CF)</span>
+          <span>VESC</span>
+          <span>LiDAR</span>
+          <span>Intel RealSense D435i</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT CONTENT -->
+  <section class="project-detail">
+    <div class="container">
+      <div class="detail-content">
+
+        <!-- Abstract -->
+        <div class="detail-section">
+          <h2>Abstract</h2>
+          <p>This project focuses on building the hardware foundation of an autonomous Ackermann steering car. The work includes designing and assembling the chassis, developing an appropriate power system, and integrating sensors and key components such as LiDAR, camera, and NVIDIA Jetson Orin Nano. The objective is to complete a fully functional autonomous system from scratch that will support autonomous tasks. This first phase lays the groundwork for developing a machine learning model for lane detection in the next semester.</p>
+        </div>
+
+        <!-- Mechanical Design -->
+        <div class="detail-section">
+          <h2>Mechanical Design &amp; Fabrication</h2>
+          <p>The mechanical design was developed by studying real passenger vehicles, with attention to steering geometry, drivetrain layout, and axle configuration. An <strong>Ackermann steering architecture</strong> with front steering and rear-wheel drive was selected.</p>
+          <p>Key components designed in SolidWorks include:</p>
+          <ul>
+            <li>Front steering assembly</li>
+            <li>Rear axle assembly</li>
+            <li>Battery holder</li>
+            <li>Jetson mounting plate</li>
+            <li>Servo mount</li>
+          </ul>
+          <p>All custom parts were fabricated using a <strong>Bambu Lab A1 Mini 3D printer</strong> with PETG carbon-fiber filament for stiffness-to-weight optimization. An early 3D-printed differential was replaced with a metal differential after durability testing.</p>
+
+          <div class="spec-table">
+            <h3>Vehicle Specifications</h3>
+            <table>
+              <tr><td>Overall Length</td><td>0.29 m</td></tr>
+              <tr><td>Overall Width</td><td>0.195 m</td></tr>
+              <tr><td>Overall Height</td><td>0.09 m</td></tr>
+              <tr><td>Wheelbase</td><td>0.29 m</td></tr>
+              <tr><td>Track Width</td><td>0.195 m</td></tr>
+              <tr><td>Wheel Radius</td><td>0.033 m</td></tr>
+              <tr><td>LiDAR Mount Height</td><td>0.085 m</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Sensor & Power -->
+        <div class="detail-section">
+          <h2>Sensor &amp; Power Integration</h2>
+          <p>The vehicle is powered by a <strong>2200 KV sensored brushless DC motor</strong> controlled via a VESC motor controller interfaced with the Jetson over UART. The power system uses two separate <strong>4S 4400 mAh LiPo batteries</strong> &mdash; one for computing and one for the drivetrain &mdash; with a 5A inline fuse protecting the Jetson.</p>
+          <p>Perception sensors include:</p>
+          <ul>
+            <li><strong>2D LiDAR</strong> &mdash; 12 m max range for SLAM and navigation</li>
+            <li><strong>Intel RealSense D435i</strong> &mdash; RGB-D camera for depth and color</li>
+          </ul>
+          <p>Steering is actuated by a <strong>25 kg-cm high-torque servo</strong> driven through a PCA9685 controller over I2C.</p>
+        </div>
+
+        <!-- Software Architecture -->
+        <div class="detail-section">
+          <h2>ROS 2 Software Architecture</h2>
+          <p>A modular ROS 2 Humble architecture integrates hardware control, state estimation, and navigation:</p>
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>URDF / Xacro Model</h4>
+              <p>Complete kinematic and geometric description with consistent dimensions across control, odometry, and simulation. Includes Gazebo plugin support for future sim work.</p>
+            </div>
+            <div class="detail-card">
+              <h4>Motor Control Bridge</h4>
+              <p>Converts <code>/cmd_vel</code> to motor duty cycles and servo angles using Ackermann geometry. Implements dead zones, timeouts, and current braking for safety.</p>
+            </div>
+            <div class="detail-card">
+              <h4>Motor-Based Odometry</h4>
+              <p>Estimates position and heading from VESC encoder tachometer counts and steering feedback using Ackermann kinematics. Publishes <code>odom &rarr; base_link</code> transform.</p>
+            </div>
+            <div class="detail-card">
+              <h4>Web Teleoperation</h4>
+              <p>Flask-based browser control panel for manual driving, steering, emergency stop, and system monitoring. Commands routed through <code>/cmd_vel</code> for Nav2 compatibility.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="detail-section">
+          <h2>Autonomous Navigation with Nav2</h2>
+          <p>The vehicle uses the full ROS 2 Nav2 stack configured for nonholonomic Ackermann vehicles:</p>
+          <div class="spec-table">
+            <table>
+              <tr><td>Localization</td><td>AMCL (Adaptive Monte Carlo Localization)</td></tr>
+              <tr><td>Global Planner</td><td>SMAC Hybrid Planner</td></tr>
+              <tr><td>Motion Model</td><td>Reeds-Shepp (forward + reverse)</td></tr>
+              <tr><td>Local Controller</td><td>Regulated Pure Pursuit</td></tr>
+              <tr><td>Mapping</td><td>SLAM Toolbox (synchronous mode)</td></tr>
+              <tr><td>Recovery</td><td>Spin, Backup, Drive-on-Heading, Wait</td></tr>
+              <tr><td>Velocity Smoothing</td><td>20 Hz, &plusmn;0.3 m/s linear, &plusmn;1.0 rad/s angular</td></tr>
+            </table>
+          </div>
+          <p>The SMAC Hybrid Planner generates kinematically feasible paths that respect steering constraints. Reeds-Shepp motion primitives enable the vehicle to reverse out of dead ends and reposition in tight spaces. The Regulated Pure Pursuit controller automatically reduces speed in high-curvature regions.</p>
+        </div>
+
+        <!-- Results -->
+        <div class="detail-section">
+          <h2>Results</h2>
+          <div class="detail-grid">
+            <div class="detail-card result-card">
+              <h4>&#9881; Mechanical</h4>
+              <p>Ackermann steering produced smooth turning. Metal differential eliminated gear wear. Dual-battery system prevented Jetson resets during operation.</p>
+            </div>
+            <div class="detail-card result-card">
+              <h4>&#128225; Sensors</h4>
+              <p>LiDAR produced clean, dense scan data. RealSense provided synchronized RGB-D streams. Sensor frames aligned correctly in RViz via URDF transforms.</p>
+            </div>
+            <div class="detail-card result-card">
+              <h4>&#128663; Control</h4>
+              <p>Servo steering center calibrated at ~125&deg; with symmetric response. Dead zone eliminated oscillations. Velocity smoothing ensured stable motion.</p>
+            </div>
+            <div class="detail-card result-card">
+              <h4>&#128506; Navigation</h4>
+              <p>Vehicle autonomously localized within a prebuilt SLAM map and navigated to user-defined goals while avoiding obstacles and respecting steering constraints.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="detail-section">
+          <h2>Conclusion &amp; Future Work</h2>
+          <p>This project successfully demonstrated the complete design, fabrication, and integration of a real-world autonomous Ackermann-steered vehicle. Starting from a blank platform, the work encompassed mechanical design, sensor integration, low-level control, state estimation, SLAM mapping, and autonomous navigation with Nav2.</p>
+          <p><strong>Future work</strong> will build on this foundation by incorporating CNN-based lane detection using the onboard RGB-D camera, sensor fusion for improved localization, and expanded testing in more complex environments.</p>
+        </div>
+
+        <!-- Download -->
+        <div class="detail-section detail-cta">
+          <a href="index.html#projects" class="btn btn-outline">&larr; Back to Projects</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Yamin Mir. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/scripts.js"></script>
+</body>
+</html>

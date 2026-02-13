@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pentagon Robot &#8211; Yamin Mir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">YM<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#resume">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Project Hero -->
+  <section class="project-hero">
+    <div class="container">
+      <a href="index.html#projects" class="back-link">&#8592; Back to Projects</a>
+      <div class="project-hero-header">
+        <span class="project-tag">Senior Design (ME-396)</span>
+        <h1 class="project-hero-title">Pentagon Robot &#8211; Five-Bar Parallel Planar Manipulator</h1>
+        <p class="project-hero-subtitle">
+          An automated pick-and-place system using a five-bar parallel planar linkage mechanism,
+          designed to bridge the gap between theoretical classroom concepts and real-world mechatronic
+          applications. The robot performs high-speed object transfer with &#177;0.5&thinsp;mm accuracy
+          and &#8804;5-second cycle time.
+        </p>
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Course</span>
+            <span class="meta-value">ME-396 Senior Design I</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Design &amp; Simulation Lead</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Team</span>
+            <span class="meta-value">MIE-25 (5 Members)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">Design Phase Complete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detail Content -->
+  <section class="project-detail">
+    <div class="container">
+      <div class="detail-content">
+
+        <!-- Abstract -->
+        <div class="detail-section">
+          <h2>Abstract</h2>
+          <p>
+            The automation of material handling is a cornerstone of modern manufacturing efficiency, yet there
+            remains a significant need for accessible, educational platforms that demonstrate these complex
+            kinematic principles. The Pentagon Robot addresses this gap by designing a five-bar parallel planar
+            manipulator capable of performing automated pick-and-place operations on spherical objects between
+            two predefined matrices.
+          </p>
+          <p>
+            The methodology employs a rigorous Model-Based Design (MBD) approach. The mechanical architecture
+            utilizes a closed-loop five-bar linkage driven by two base-mounted NEMA 17 stepper motors, a configuration
+            selected through a formal decision matrix analysis. Kinematic control is achieved via an inverse kinematics
+            model solved through the Law of Cosines, enabling precise end-effector positioning within a computed workspace.
+          </p>
+        </div>
+
+        <!-- Design Criteria -->
+        <div class="detail-section">
+          <h2>Design Criteria &amp; Requirements</h2>
+
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>&#9881;&#65039; Functional Requirements</h4>
+              <ul>
+                <li>Five-bar parallel planar linkage mechanism</li>
+                <li>Closed-loop chain to minimize moving inertia</li>
+                <li>Higher acceleration vs. serial manipulators</li>
+                <li>Vacuum suction end-effector with pressure feedback</li>
+              </ul>
+            </div>
+            <div class="detail-card">
+              <h4>&#127919; Performance Metrics</h4>
+              <ul>
+                <li>Full transfer cycle &#8804; 5 seconds</li>
+                <li>Placement accuracy &#177; 0.5&thinsp;mm</li>
+                <li>Pick &#8594; Move &#8594; Place &#8594; Return</li>
+                <li>Secure ball seating in matrix</li>
+              </ul>
+            </div>
+            <div class="detail-card">
+              <h4>&#128176; Design Constraints</h4>
+              <ul>
+                <li>Prototype budget: $350 maximum</li>
+                <li>Cost-effective 3D printing &amp; off-the-shelf parts</li>
+                <li>Compact workspace footprint</li>
+                <li>Educational demonstration capability</li>
+              </ul>
+            </div>
+            <div class="detail-card">
+              <h4>&#128220; Engineering Standards</h4>
+              <ul>
+                <li>ASME Y14.5 &#8211; GD&amp;T</li>
+                <li>ASTM B221 &#8211; Aluminum specs</li>
+                <li>IPC/WHMA-A-620 &#8211; Wire harness</li>
+                <li>IEC 60034 &#8211; Rotating machines</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kinematic Analysis -->
+        <div class="detail-section">
+          <h2>Kinematic Analysis &amp; Workspace</h2>
+          <p>
+            The Pentagon Robot utilizes a five-bar parallel planar linkage mechanism. To achieve precise control
+            over the end-effector position, the system relies on an <strong>Inverse Kinematics (IK)</strong>
+            model derived from the Law of Cosines. For each motor base, the distance to the target point is
+            calculated, and the joint angle is determined by combining the vector angle with an internal angle
+            to select the &#8220;elbow-out&#8221; configuration, avoiding singularities.
+          </p>
+          <p>
+            The reachable workspace is defined as the intersection of the annular regions accessible by the
+            two independent arms. Since the selected geometry is symmetric (L1 = L2), the maximum reach per
+            arm is 2L1 = 500&thinsp;mm. The code generates a filled contour map of the workspace, providing
+            visual verification of reachability across the target area.
+          </p>
+
+          <div class="spec-table">
+            <h3>Kinematic Parameters</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Proximal Link (L1)</td>
+                  <td>250&thinsp;mm</td>
+                  <td>Arm attached to the motor</td>
+                </tr>
+                <tr>
+                  <td>Distal Link (L2)</td>
+                  <td>250&thinsp;mm</td>
+                  <td>Forearm connecting to end-effector</td>
+                </tr>
+                <tr>
+                  <td>Base Separation (d)</td>
+                  <td>200&thinsp;mm</td>
+                  <td>Distance between motor shafts</td>
+                </tr>
+                <tr>
+                  <td>Workspace Radius (R<sub>max</sub>)</td>
+                  <td>500&thinsp;mm</td>
+                  <td>Maximum theoretical extension</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- End-Effector -->
+        <div class="detail-section">
+          <h2>End-Effector &amp; Suction System</h2>
+          <p>
+            For picking and placing ping-pong balls, the team evaluated mechanical grippers and suction-based
+            grabbers. After comparing advantages and limitations, a <strong>suction-based system</strong> was
+            selected for its gentler handling, simpler control, and reliable grip on smooth spherical surfaces.
+          </p>
+          <p>
+            During operation, a pressure sensor monitors negative pressure levels and confirms when the ball
+            has been securely lifted. This sensing logic is integrated directly into the inverse kinematics
+            control loop &#8212; the robot does not advance to the next placement position until the sensor
+            verifies a successful grip.
+          </p>
+          <p>
+            The suction assembly consists of a vacuum pump, flexible tubing, a suction cup, a T-junction,
+            and the pressure sensor positioned at the pneumatic line where pressure changes are most representative
+            of the suction cup&#8217;s contact state.
+          </p>
+        </div>
+
+        <!-- Design Iterations -->
+        <div class="detail-section">
+          <h2>Design Iterations &amp; Decision Matrix</h2>
+          <p>
+            Three primary design iterations were developed and evaluated to optimize the mechanical
+            configuration of the linkages and actuation transmission:
+          </p>
+
+          <div class="detail-grid three-col">
+            <div class="detail-card">
+              <h4>Design A: Co-Planar</h4>
+              <p>All linkages and joints on a single horizontal plane. Simplifies CAD but suffers from
+                 significant mechanical interference between crossed links.</p>
+            </div>
+            <div class="detail-card">
+              <h4>Design B: Belt-Driven</h4>
+              <p>Motors mounted remotely using timing belts to drive primary arms. High precision but
+                 introduces compliance, backlash, and added complexity.</p>
+            </div>
+            <div class="detail-card result-card">
+              <h4>Design C: Stacked Direct-Drive &#10003;</h4>
+              <p>Base-mounted motors with linkage pairs separated by vertical offsets (spacers). Eliminates
+                 interference and maximizes workspace reach. <strong>Selected as final design.</strong></p>
+            </div>
+          </div>
+
+          <p>
+            Designs were evaluated based on <strong>Workspace Reach</strong> (Critical),
+            <strong>Manufacturing Cost</strong> (Critical), and <strong>Assembly Simplicity</strong>.
+            Design C scored highest across all weighted criteria.
+          </p>
+        </div>
+
+        <!-- Cost Analysis -->
+        <div class="detail-section">
+          <h2>Cost Analysis</h2>
+
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>&#128295; Prototype (Phase 1)</h4>
+              <p>Total fabrication cost: <strong>$229.00</strong> &#8212; well below the $350 budget constraint.
+                 Leverages 3D printing (PLA) for structural links and off-the-shelf standardized components.</p>
+            </div>
+            <div class="detail-card">
+              <h4>&#127981; Mass Production (Phase 2)</h4>
+              <p>Scaled analysis for 1,000 units enables <strong>40&#8211;60% cost reduction</strong> through
+                 bulk purchasing, injection-molded ABS (replacing 3D printed PLA), and custom PCB integration
+                 replacing Arduino UNO + CNC Shield.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="detail-section">
+          <h2>Preliminary Results</h2>
+
+          <div class="detail-grid">
+            <div class="detail-card result-card">
+              <h4>&#9201; Cycle Time</h4>
+              <p>Motion simulations confirm &#8804; 5-second cycle for a complete Pick &#8594; Move &#8594; Place &#8594; Return operation.</p>
+            </div>
+            <div class="detail-card result-card">
+              <h4>&#127919; Placement Accuracy</h4>
+              <p>IK model achieves placement accuracy within &#177; 0.5&thinsp;mm, verified through workspace contour analysis.</p>
+            </div>
+            <div class="detail-card result-card">
+              <h4>&#128176; Budget Compliance</h4>
+              <p>Prototype cost of $229.00 is 34.6% under the $350 budget ceiling, leaving margin for contingencies.</p>
+            </div>
+            <div class="detail-card result-card">
+              <h4>&#128736; Design Validation</h4>
+              <p>Stacked Direct-Drive configuration eliminates all mechanical interference while maximizing workspace volume.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="detail-section">
+          <h2>Conclusion &amp; Next Steps</h2>
+          <p>
+            The Pentagon Robot project successfully completed the &#8220;Design and Simulation&#8221; phase.
+            Through rigorous design iteration, the team selected a Stacked Direct-Drive configuration that
+            eliminates mechanical interference and maximizes workspace reach while adhering to a simplified
+            fabrication pipeline using 3D-printed PLA linkages and off-the-shelf components.
+          </p>
+          <p>
+            The next phase (Senior Design II) focuses on physical fabrication, assembly, and validation.
+            This includes uploading firmware to the Arduino, calibrating the IK model against physical
+            joint positions, and performing continuous-cycle testing to verify the &#8804;5-second cycle
+            time and &#177;0.5&thinsp;mm accuracy targets under real-world conditions.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="detail-cta">
+          <a href="index.html#projects" class="btn btn-secondary">&#8592; All Projects</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&#169; 2025 Yamin Mir. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/scripts.js"></script>
+</body>
+</html>
