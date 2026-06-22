@@ -1,4 +1,7 @@
 *.pdf
+# keep the resume so the download link works on the live site
+!Resume_YAmin_C.pdf
 *.docx
 .venv/
 .DS_Store
+me320.py

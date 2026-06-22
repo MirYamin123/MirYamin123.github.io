@@ -613,6 +613,17 @@ ul {
   color: var(--color-primary);
 }
 
+/* Non-navigating label (e.g. ongoing / coming-soon projects) */
+.project-link-static {
+  cursor: default;
+  opacity: 0.9;
+}
+
+.project-link-static:hover {
+  background: transparent;
+  color: #fff;
+}
+
 .project-info {
   padding: 1.5rem;
 }
@@ -1353,6 +1364,25 @@ ul {
 
   .detail-cta .btn {
     text-align: center;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-in {
+    opacity: 1;
+    transform: none;
   }
 }
 

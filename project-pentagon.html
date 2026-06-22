@@ -4,23 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pentagon Robot &#8211; Mir Yamin</title>
+  <meta name="description" content="Pentagon Robot — a five-bar parallel planar manipulator for automated pick-and-place, with inverse kinematics for +/-0.5mm accuracy and a sub-5-second cycle time." />
+  <meta name="theme-color" content="#0a0a0f" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='88'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="nav-logo">YM<span>.</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#resume">Resume</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#9881;</span>
+        <span class="logo-text">YAMIN</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#projects" class="nav-link active">Projects</a></li>
+        <li><a href="index.html#resume" class="nav-link">Resume</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
       </ul>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger"></span>
       </button>
     </div>
   </nav>
@@ -295,8 +301,8 @@
         </div>
 
         <!-- CTA -->
-        <div class="detail-cta">
-          <a href="index.html#projects" class="btn btn-secondary">&#8592; All Projects</a>
+        <div class="detail-section detail-cta">
+          <a href="index.html#projects" class="btn btn-outline">&#8592; Back to Projects</a>
         </div>
 
       </div>

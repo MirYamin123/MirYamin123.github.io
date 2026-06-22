@@ -7,21 +7,29 @@ const navLinks = document.getElementById('navLinks');
 const navLinkItems = document.querySelectorAll('.nav-link');
 
 // Shrink navbar on scroll
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+}
 
 // Mobile menu toggle
-navToggle.addEventListener('click', () => {
-  navToggle.classList.toggle('active');
-  navLinks.classList.toggle('open');
-});
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('active', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+}
 
 // Close menu when a link is clicked
 navLinkItems.forEach(link => {
   link.addEventListener('click', () => {
-    navToggle.classList.remove('active');
-    navLinks.classList.remove('open');
+    if (navToggle) {
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+    if (navLinks) navLinks.classList.remove('open');
   });
 });
 
@@ -82,7 +90,10 @@ const heroObserver = new IntersectionObserver(
 );
 
 const heroStats = document.querySelector('.hero-stats');
-if (heroStats) heroObserver.observe(heroStats);
+if (heroStats) {
+  // Animate immediately if the section is already on screen, otherwise wait for it.
+  heroObserver.observe(heroStats);
+}
 
 // ==========================================
 //  PROJECT FILTER
@@ -172,7 +183,8 @@ if (skillsGrid) skillObserver.observe(skillsGrid);
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
-contactForm.addEventListener('submit', e => {
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
   e.preventDefault();
 
   // Gather form data
@@ -203,9 +215,11 @@ contactForm.addEventListener('submit', e => {
     submitBtn.disabled = false;
     submitBtn.innerHTML = 'Send Message <span class="btn-arrow">→</span>';
   }, 1500);
-});
+  });
+}
 
 function showStatus(msg, type) {
+  if (!formStatus) return;
   formStatus.textContent = msg;
   formStatus.className = 'form-status ' + type;
   setTimeout(() => {
@@ -222,9 +236,15 @@ function isValidEmail(email) {
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(anchor.getAttribute('href'));
+    const href = anchor.getAttribute('href');
+    // Ignore placeholder links like href="#" (querySelector('#') would throw).
+    if (!href || href === '#') {
+      e.preventDefault();
+      return;
+    }
+    const target = document.querySelector(href);
     if (target) {
+      e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
     }
   });
